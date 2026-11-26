@@ -1,0 +1,27 @@
+PANDUAN MENAYANGKAN ONLINE (VPS + domain + HTTPS)
+=================================================
+Syarat: VPS Linux (Ubuntu) yang bisa menjalankan Node.js 18+. Shared hosting/cPanel biasa umumnya TIDAK bisa.
+
+1. Upload folder aplikasi ke VPS (mis. /opt/absensi), lalu:   npm install --omit=dev
+2. Jalankan di belakang HTTPS (pilih satu):
+   a) Caddy (paling mudah, sertifikat otomatis). /etc/caddy/Caddyfile:
+        absensi.sekolahanda.sch.id {
+            reverse_proxy 127.0.0.1:3000
+        }
+   b) Nginx + certbot: proxy_pass http://127.0.0.1:3000;  dengan  proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $remote_addr;  proxy_set_header X-Forwarded-Proto $scheme;
+3. Jalankan aplikasi dengan variabel ini (pm2 / systemd):
+        TRUST_PROXY=1 HOST=127.0.0.1 NO_HTTPS=1 PORT=3000 node server.js
+   TRUST_PROXY=1 : IP asli pengunjung terbaca (batas login benar) dan cookie otomatis "Secure" lewat HTTPS.
+   HOST=127.0.0.1: aplikasi hanya bisa diakses lewat proxy, bukan langsung dari internet.
+   NO_HTTPS=1    : matikan HTTPS bawaan (sertifikat dari Caddy/Nginx).
+   Contoh pm2:  pm2 start server.js --name absensi   (set env di ecosystem file)
+4. (Disarankan) Batasi login admin/OSIS hanya dari jaringan sekolah / IP tertentu:
+        ADMIN_IPS=36.12.34.56,192.168.100.
+   Akhiran titik = awalan IP. Siswa & guru tetap bisa login dari mana saja. Kosongkan jika tidak dipakai.
+5. Firewall: buka hanya port 80 dan 443 (dan SSH). Jangan buka port 3000 ke publik.
+6. Pertama kali jalan tanpa akun.json: password admin ACAK dibuat dan tampil sekali di terminal. Catat & ganti.
+   Salin akun.json lama jika ingin akun yang sama. Tidak ada lagi akun bawaan admin/osis.
+7. Cadangan: jalankan  node backup.js  (atau cron harian), lalu salin folder backup/ ke tempat lain.
+8. Siswa yang login pertama kali WAJIB mengganti password (password awal = kode kartu).
+Catatan: data siswa adalah data pribadi anak. Beri tahu pihak sekolah dan batasi siapa yang memegang akun admin.

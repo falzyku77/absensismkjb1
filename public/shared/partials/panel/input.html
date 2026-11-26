@@ -1,0 +1,17 @@
+  <section class="pg" id="p-input">
+    <div class="card"><h2>Input Pelanggaran Siswa</h2>
+      <div class="row"><label class="f">Kelas<select id="inKl"><option value="">Semua kelas</option></select></label>
+      <label class="f">Cari nama siswa<input id="inQ" type="search" placeholder="Ketik nama…"></label></div>
+      <div class="pick" id="inPick"></div>
+    </div>
+    <div class="card" id="inForm" style="display:none"><h2 id="inWho"></h2>
+      <form class="form" id="pelForm" autocomplete="off">
+        <label class="f">Jenis<select name="jenis"><option value="RINGAN">Ringan (+5 poin)</option><option value="BERAT">Berat (+25 poin)</option></select></label>
+        <label class="f">Tanggal kejadian<input type="date" name="tanggal"></label>
+        <label class="f">Pelanggaran<select name="judul"></select></label>
+        <label class="f" id="inLainW" style="display:none">Tulis pelanggaran<input name="lain" maxlength="80"></label>
+        <label class="f full">Catatan (opsional)<textarea name="catatan" maxlength="300" style="min-height:70px"></textarea></label>
+        <div class="full"><button class="btn">Simpan pelanggaran</button><div id="inMsg" class="msg"></div></div>
+      </form>
+    </div>
+  </section>

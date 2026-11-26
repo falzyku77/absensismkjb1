@@ -1,0 +1,36 @@
+{
+  "ok": {
+    "jenis": "file",
+    "preset": "bawaan",
+    "teks": "Selamat datang {nama}",
+    "rate": 1,
+    "pitch": 1,
+    "voice": "",
+    "vol": 1,
+    "file": {
+      "name": "hidup-jokowi-prabowo.mp3",
+      "type": "audio/mpeg",
+      "ver": 1794360135414
+    }
+  },
+  "dup": {
+    "jenis": "ucap",
+    "preset": "bawaan",
+    "teks": "{nama} sudah hadir",
+    "rate": 1.3,
+    "pitch": 1,
+    "voice": "",
+    "vol": 1,
+    "file": null
+  },
+  "bad": {
+    "jenis": "ucap",
+    "preset": "bawaan",
+    "teks": "Kartu tidak dikenali",
+    "rate": 1,
+    "pitch": 1,
+    "voice": "",
+    "vol": 1,
+    "file": null
+  }
+}

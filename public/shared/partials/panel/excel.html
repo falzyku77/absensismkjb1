@@ -1,0 +1,16 @@
+  <section class="pg" id="p-excel">
+    <div class="card"><h2>Rekap Absensi Excel Bulanan</h2>
+      <div class="row">
+        <label class="f">Bulan<input type="month" id="xlBln"></label>
+        <label class="f">Sesi masuk<select id="xlSh"><option value="semua">Semua (Pagi &amp; Siang, sheet terpisah)</option><option value="pagi">Hanya Pagi</option><option value="siang">Hanya Siang</option></select></label>
+        <label class="f">Kelas <small>(klik panah ▼ atau ketik)</small><input id="xlKl" list="xlKlList" placeholder="Semua kelas" autocomplete="off"><datalist id="xlKlList"></datalist></label>
+        <a class="btn" id="xlGo" href="#" style="text-decoration:none">Unduh Excel</a>
+      </div>
+      <p class="hint">Isi file: sheet <b>Ringkasan Kelas</b>, <b>Rekap Pagi</b>, dan <b>Rekap Siang</b> (tiap siswa per tanggal: H/T/S/I/A + total + % hadir). Kelas masuk pagi/siang diatur di menu Sesi Masuk &amp; Terlambat.</p>
+      <div id="xlSesi"></div>
+    </div>
+    <div class="card"><h2>Rekap Otomatis Tersimpan</h2>
+      <p class="hint" style="margin-top:0">Server membuat file rekap sendiri untuk setiap bulan yang sudah lewat (pagi &amp; siang sekaligus). File tersimpan juga di folder <code>rekap/</code> pada komputer server.</p>
+      <div id="xlList" class="tw"></div>
+    </div>
+  </section>

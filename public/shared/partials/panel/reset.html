@@ -1,0 +1,12 @@
+  <section class="pg" id="p-reset">
+    <div class="card"><h2>Reset Poin Pelanggaran</h2>
+      <div class="alert warn">Hanya <b>Admin</b>. Reset mengarsipkan pelanggaran &amp; SP yang aktif sehingga total poin kembali <b>0</b>. Riwayat tidak dihapus permanen dan reset dapat dibatalkan di bagian Riwayat Reset.</div>
+      <button class="btn bad" id="rsAll" type="button">Reset poin SEMUA siswa</button>
+    </div>
+    <div class="card"><h2>Reset beberapa siswa</h2>
+      <div class="row"><label class="f">Kelas<select id="rsKl"><option value="">Semua kelas</option></select></label><label class="f">Cari nama<input id="rsQ" type="search" placeholder="Ketik nama…"></label>
+      <button class="btn alt" id="rsSel" type="button">Pilih semua yang tampil</button><button class="btn bad" id="rsGo" type="button">Reset yang dipilih (<span id="rsN">0</span>)</button></div>
+      <div id="rsList" class="tw" style="margin-top:12px"></div>
+    </div>
+    <div class="card"><h2>Riwayat Reset</h2><div id="rsLog" class="tw"></div></div>
+  </section>

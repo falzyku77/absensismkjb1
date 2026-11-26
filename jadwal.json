@@ -1,0 +1,19 @@
+{
+  "force": null,
+  "list": [
+    {
+      "name": "PAGI",
+      "start": "05:00",
+      "end": "12:00",
+      "shift": "pagi",
+      "batas": "07:00"
+    },
+    {
+      "name": "SIANG",
+      "start": "12:01",
+      "end": "18:00",
+      "shift": "siang",
+      "batas": "13:00"
+    }
+  ]
+}

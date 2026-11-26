@@ -1,0 +1,121 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal Siswa · Absensi Kehadiran</title><link rel="icon" href="/shared/img/logo.jpg"><link rel="stylesheet" href="/shared/css/ui.css"></head><body>
+<aside class="side">
+  <div class="brand"><img src="/shared/img/logo.jpg" alt="Logo SMK Jakarta Barat 1"><b>PORTAL SISWA</b><small>SMK Jakarta Barat 1</small></div>
+  <nav class="menu" id="menu"></nav>
+  <button class="btn alt logout" id="out" type="button">Keluar</button>
+  <div class="foot">&copy; @copyright rifaladitia<br>081312327972</div>
+</aside>
+<div id="ovl"></div>
+<div class="main">
+  <header class="top"><button id="burger" type="button" aria-label="Menu"></button><h1 id="ttl"></h1><button class="btn alt sm" id="bell" type="button" title="Notifikasi"></button><div class="who" id="who"></div></header>
+  <main class="content">
+
+  <!-- PROFIL -->
+  <section class="pg" id="p-profil">
+    <div id="pwWarn"></div>
+    <div class="card"><h2>Profil Saya</h2>
+      <div class="profile">
+        <div id="pfAvatar"></div>
+        <dl id="pfInfo"></dl>
+      </div>
+      <div class="row" style="margin-top:16px">
+        <input type="file" id="fotoIn" accept="image/*" hidden>
+        <button class="btn" id="fotoBtn" type="button">Unggah / ganti foto</button>
+        <button class="btn ghost" id="fotoDel" type="button">Hapus foto</button>
+      </div>
+      <p class="hint">Gunakan foto wajah yang jelas. Foto otomatis dikecilkan agar hemat kuota (JPG/PNG).</p>
+      <div id="fotoMsg" class="msg"></div>
+    </div>
+    <div class="grid" id="pfStat"></div>
+    <div class="card"><h2>Ganti Password</h2>
+      <form class="form" id="pwForm" autocomplete="off">
+        <label class="f full">Password saat ini<input type="password" name="lama" required autocomplete="current-password"></label>
+        <label class="f">Password baru (minimal 6 karakter)<input type="password" name="baru" minlength="6" required autocomplete="new-password"></label>
+        <label class="f">Ulangi password baru<input type="password" name="ulang" minlength="6" required autocomplete="new-password"></label>
+        <div class="full"><button class="btn">Simpan password</button><div id="pwMsg" class="msg"></div></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- NOTIFIKASI -->
+  <section class="pg" id="p-notif">
+    <div class="card"><h2>Notifikasi</h2><div class="row" style="margin-bottom:12px"><button class="btn alt sm" id="ntAll" type="button">Tandai semua dibaca</button></div><div id="ntBox"></div></div>
+  </section>
+
+  <!-- POIN -->
+  <section class="pg" id="p-poin">
+    <div class="card"><h2>Poin Pelanggaran Saya</h2><div id="poinBox"></div></div>
+    <div class="card"><h2>Aturan Poin</h2>
+      <div class="tw"><table><tr><th>Jenis</th><th>Contoh</th><th>Poin pelanggaran</th></tr>
+      <tr><td><span class="badge b-RINGAN">Ringan</span></td><td>Terlambat, atribut tidak lengkap, dsb.</td><td><b id="aRingan">5</b> poin</td></tr>
+      <tr><td><span class="badge b-BERAT">Berat</span></td><td>Berkelahi, merokok, membolos, dsb.</td><td><b id="aBerat">25</b> poin</td></tr></table></div>
+      <p class="hint">Setiap pelanggaran menambah poin pelanggaran Anda. Bila total poin mencapai batas tertentu, sekolah menerbitkan Surat Peringatan (SP).</p>
+    </div>
+  </section>
+
+  <!-- RIWAYAT PELANGGARAN -->
+  <section class="pg" id="p-riwayatp">
+    <div class="card"><h2>Riwayat Pelanggaran</h2><div id="pelBox" class="tw"></div></div>
+  </section>
+
+  <!-- RIWAYAT ABSEN -->
+  <section class="pg" id="p-absen">
+    <div class="grid" id="absStat"></div>
+    <div class="card"><h2>Riwayat Absen</h2><div id="absBox" class="tw"></div></div>
+  </section>
+
+  <!-- PENGAJUAN IZIN -->
+  <section class="pg" id="p-izin">
+    <div class="card"><h2><span id="icIzin"></span>Buat Pengajuan Izin / Sakit</h2>
+      <div class="alert info">Izin hanya sah jika Anda mengisi form ini <b>sebelumnya</b> dan melampirkan <b>foto surat / bukti</b>. Pengajuan akan diperiksa wali kelas atau kesiswaan.</div>
+      <form class="form" id="izForm" autocomplete="off">
+        <label class="f">Pilih Tanggal<input type="date" name="tanggal" required></label>
+        <label class="f">Keterangan<select name="tipe"><option value="IZIN">Izin (I)</option><option value="SAKIT">Sakit (S)</option></select></label>
+        <label class="f">Nama Lengkap<input name="nama" readonly></label>
+        <label class="f">Kelas<input name="kelas" readonly></label>
+        <label class="f full">Alasan Lengkap<textarea name="alasan" maxlength="500" placeholder="Tulis alasan izin / sakit secara jelas" required></textarea></label>
+        <label class="f full">Upload Surat/Bukti (Wajib Foto)<input type="file" name="bukti" accept="image/*"><img class="preview" id="izPrev" alt="Pratinjau"></label>
+        <div class="full"><button class="btn full" id="izBtn">Kirim Pengajuan</button><div id="izMsg" class="msg"></div></div>
+      </form>
+    </div>
+    <div class="card"><h2>Riwayat Pengajuan Saya</h2><div id="izList" class="tw"></div></div>
+  </section>
+
+  <!-- LAPOR PELANGGARAN -->
+  <section class="pg" id="p-lapor">
+    <div class="card"><h2>Lapor Pelanggaran</h2>
+      <div class="alert info">Laporkan pelanggaran yang Anda lihat dengan jujur. Tidak tahu nama atau kelasnya? Tetap boleh melapor: lampirkan foto bukti dan ciri-cirinya, <b>kesiswaan yang akan mencari tahu</b>. Nama pelapor <b>dirahasiakan</b> (anonim) dari siswa yang dilaporkan, supaya tidak terjadi pertengkaran. Laporan palsu dapat ditindak.</div>
+      <form class="form" id="lpForm" autocomplete="off">
+        <label class="f">Kelas siswa yang melanggar <small>(kosongkan jika tidak tahu)</small><select name="kelas"><option value="">Tidak tahu / lewati</option></select></label>
+        <label class="f">Nama siswa yang melanggar <small>(kosongkan jika tidak tahu)</small><input name="nama" list="lpNama" placeholder="Ketik / pilih nama, atau kosongkan"><datalist id="lpNama"></datalist></label>
+        <label class="f full">Apa yang terjadi?<textarea name="deskripsi" maxlength="600" placeholder="Jelaskan pelanggarannya: apa, di mana, kapan. Jika tidak tahu nama/kelas, tulis ciri-ciri (tinggi, rambut, atribut) dan lokasi." required></textarea></label>
+        <label class="f full">Bukti Foto (Wajib)<input type="file" name="bukti" accept="image/*"><img class="preview" id="lpPrev" alt="Pratinjau"></label>
+        <div class="full"><button class="btn full" id="lpBtn">Kirim Laporan</button><div id="lpMsg" class="msg"></div></div>
+      </form>
+    </div>
+    <div class="card"><h2>Riwayat Laporan Saya</h2><div id="lpList" class="tw"></div></div>
+  </section>
+
+  <!-- SURAT PERINGATAN -->
+  <section class="pg" id="p-sp">
+    <div class="card"><h2>Surat Peringatan Saya</h2><div id="spBox" class="tw"></div>
+      <p class="hint">Surat Peringatan diterbitkan sekolah bila poin pelanggaran mencapai batas tertentu. Bawa surat yang dicetak untuk ditandatangani orang tua/wali.</p></div>
+  </section>
+
+  </main>
+  <footer class="copy">&copy; @copyright rifaladitia &middot; 081312327972</footer>
+</div>
+<dialog id="lb"><img id="lbimg" alt="Foto"><form method="dialog" style="text-align:center"><button class="btn alt">Tutup</button></form></dialog>
+<div id="toast"></div>
+<script src="/shared/js/ui.js"></script>
+<script src="/siswa/js/core.js"></script>
+<script src="/siswa/js/profil.js"></script>
+<script src="/siswa/js/pelanggaran.js"></script>
+<script src="/siswa/js/absen.js"></script>
+<script src="/siswa/js/izin.js"></script>
+<script src="/siswa/js/lapor.js"></script>
+<script src="/siswa/js/sp.js"></script>
+<script src="/siswa/js/notif.js"></script>
+<script src="/siswa/js/main.js"></script>
+</body></html>

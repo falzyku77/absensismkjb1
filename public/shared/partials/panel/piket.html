@@ -1,0 +1,18 @@
+  <section class="pg" id="p-piket">
+    <div class="card"><h2>Lapor Pelanggaran Siswa (Guru Piket)</h2>
+      <div class="alert info">Laporan Anda <b>langsung masuk ke antrean Kesiswaan</b> untuk diproses dan diberi poin. Pilih siswa, isi kejadiannya, foto bukti boleh dilampirkan.</div>
+      <div class="row"><label class="f">Kelas<select id="pkKl"><option value="">Semua kelas</option></select></label>
+      <label class="f">Cari nama siswa<input id="pkQ" type="search" placeholder="Ketik nama…"></label></div>
+      <div class="pick" id="pkPick"></div>
+    </div>
+    <div class="card" id="pkForm" style="display:none"><h2 id="pkWho"></h2>
+      <form class="form" id="pkF" autocomplete="off">
+        <label class="f">Jenis (usulan)<select name="jenis"><option value="RINGAN">Ringan</option><option value="BERAT">Berat</option></select></label>
+        <label class="f">Pelanggaran<select name="judul"></select></label>
+        <label class="f full" id="pkLainW" style="display:none">Tulis pelanggaran<input name="lain" maxlength="80"></label>
+        <label class="f full">Keterangan kejadian<textarea name="deskripsi" maxlength="600" required placeholder="Apa yang terjadi, di mana, jam berapa"></textarea></label>
+        <label class="f full">Foto bukti (opsional)<input type="file" name="bukti" accept="image/*"><img class="preview" id="pkPrev" alt="Pratinjau"></label>
+        <div class="full"><button class="btn">Kirim ke Kesiswaan</button><div id="pkMsg" class="msg"></div></div>
+      </form>
+    </div>
+  </section>

@@ -1,0 +1,44 @@
+STRUKTUR FOLDER TAMPILAN (public/)
+==================================
+Setiap dashboard punya foldernya sendiri. HTML, CSS, dan JS dipisah ke file/folder berbeda.
+
+public/
+  login/                  Halaman masuk              -> /login/
+    index.html  css/login.css  js/login.js
+  admin/                  Dashboard Admin & OSIS     -> /admin/
+    index.html            (absensi: dashboard, siswa, rombel, kartu, scan, jam absen, database, akun)
+    kedisiplinan.html     (khusus Admin: izin, laporan, poin, SP, reset, pengaturan)  -> /admin/kedisiplinan.html
+    css/admin.css
+    js/admin.js  js/akun-foto.js  js/kedisiplinan.js
+  kesiswaan/              Dashboard Kesiswaan        -> /kesiswaan/
+    index.html  js/kesiswaan.js
+  walas/                  Dashboard Wali Kelas       -> /walas/
+    index.html  js/walas.js
+  guru/                   Dashboard Guru & Guru Piket -> /guru/
+    index.html  js/guru.js
+  siswa/                  Portal Siswa               -> /siswa/
+    index.html
+    js/core.js profil.js pelanggaran.js absen.js izin.js lapor.js sp.js notif.js main.js
+  sp/                     Halaman Surat Peringatan (cetak, berkop) -> /sp/?id=...
+    index.html  css/sp.css  js/sp.js
+  shared/                 Dipakai bersama
+    css/ui.css            gaya umum (sidebar, kartu, tombol, tabel)
+    js/ui.js              fungsi umum (api, toast, tanggal, foto, menu)
+    img/                  logo.jpg, kop-logo.png
+    js/panel/             kode fitur panel: core.js + 1 file per fitur (izin.js, laporan.js, sp.js, ...)
+    partials/panel/       tampilan HTML tiap fitur panel (izin.html, laporan.html, sp.html, ...)
+
+CARA KERJA PANEL (Kesiswaan / Wali Kelas / Guru / Admin-Kedisiplinan)
+- Tiap fitur = 1 file HTML di shared/partials/panel/ + 1 file JS di shared/js/panel/.
+- File dashboard (mis. kesiswaan/js/kesiswaan.js) hanya memilih fitur yang dipakai:
+      startPanel({ brand: 'KESISWAAN', features: ['ringkas','izin','laporan', ...] });
+  Urutan di daftar = urutan menu. Menambah/menghapus menu cukup mengubah daftar itu.
+
+HAK AKSES (dijaga server)
+- /admin/ : Admin & OSIS   (kedisiplinan.html hanya Admin)
+- /siswa/ : Siswa   /walas/ : Wali Kelas   /kesiswaan/ : Kesiswaan   /guru/ : Guru & Guru Piket
+- Peran yang membuka folder dashboard lain otomatis dialihkan ke dashboard miliknya.
+- Alamat lama (/portal.html, /guru.html, /sp.html, /login.html, /) otomatis diarahkan ke alamat baru.
+
+SETELAH MENIMPA FOLDER
+- Jalankan BERSIHKAN-FILE-LAMA.bat sekali untuk menghapus file tampilan lama di folder public/ (aplikasi tetap jalan tanpa ini, hanya agar rapi).

@@ -1,0 +1,14 @@
+  <section class="pg" id="p-set">
+    <div class="card"><h2>Pengaturan Poin &amp; Surat Peringatan</h2>
+      <div class="alert info">Hanya <b>Admin</b> yang dapat mengubah pengaturan ini.</div>
+      <form class="form" id="setForm">
+        <label class="f">Ambang SP-1 (total poin)<input type="number" name="sp1" min="1" max="1000" required></label>
+        <label class="f">Ambang SP-2 (total poin)<input type="number" name="sp2" min="1" max="1000" required></label>
+        <label class="f">Ambang SP-3 (total poin)<input type="number" name="sp3" min="1" max="1000" required></label>
+        <label class="f">Kode surat (nomor SP)<input name="kodeSurat" maxlength="20" placeholder="SMKJB1"></label>
+        <label class="f">Nama Kepala Sekolah (tanda tangan SP)<input name="kepsek" maxlength="80"></label>
+        <label class="f">Nama Kesiswaan (tanda tangan SP)<input name="kesiswaan" maxlength="80"></label>
+        <div class="full"><button class="btn">Simpan pengaturan</button><div id="setMsg" class="msg"></div></div>
+      </form>
+    </div>
+  </section>

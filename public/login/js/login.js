@@ -1,0 +1,3 @@
+document.getElementById('f').onsubmit=async ev=>{ev.preventDefault();const box=document.getElementById('e');
+ const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(ev.target)))});const j=await r.json();
+ if(r.ok){const HOME={admin:'/admin/',osis:'/admin/',siswa:'/siswa/',walas:'/walas/',kesiswaan:'/kesiswaan/',guru:'/guru/',piket:'/guru/'}[j.role]||'/',n=new URLSearchParams(location.search).get('next')||'';location=(n[0]=='/'&&n[1]!='/'&&(n.startsWith(HOME)||n.startsWith('/sp/')))?n:HOME}else{box.textContent=j.msg;box.style.display='block'}};
